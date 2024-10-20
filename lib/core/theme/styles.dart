@@ -14,6 +14,11 @@ class Styles {
     fontWeight: FontWeight.w400,
     color: AppColors.black,
   );
+  static TextStyle font16black400w = TextStyle(
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w400,
+    color: AppColors.black,
+  );
   static TextStyle font32blueBold = TextStyle(
     fontSize: 32.sp,
     fontWeight: FontWeight.bold,

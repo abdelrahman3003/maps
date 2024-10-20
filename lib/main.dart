@@ -11,3 +11,4 @@ void main(List<String> args) async {
   );
   runApp(const MapsApp());
 }
+//bin>keytool -list -v -keystore C:\Users\Dell\.android\debug.keystore -alias androiddebugkey -storepass android -keypass android

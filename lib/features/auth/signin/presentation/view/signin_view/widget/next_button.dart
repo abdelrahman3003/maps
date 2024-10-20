@@ -25,15 +25,13 @@ class NextButton extends StatelessWidget {
           AppDialog().showSnackbar(context, state.errorMessage);
         }
         if (state is SigninSuccess) {
-          context.pushNameed(Routes.home);
+          context.pushNameed(Routes.verificationView);
         }
         return AppButton(
           isLoading: isLoading,
           width: 100.w,
-          text: "Next",
-          onPressed: () {
-            !isLoading ? context.read<SigninCubit>().phoneSignin() : null;
-          },
+          text: "Verify",
+          onPressed: () {},
         );
       },
     );
