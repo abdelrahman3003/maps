@@ -10,13 +10,13 @@ class Routes {
   static const String verificationView = '/verification';
   static Route generateRoute(RouteSettings setting) {
     switch (setting.name) {
-      case siginView:
+      case "/":
         return MaterialPageRoute(
             builder: (context) => BlocProvider(
                   create: (context) => SigninCubit(),
                   child: const SigninView(),
                 ));
-      case "/":
+      case verificationView:
         return MaterialPageRoute(
             builder: (context) => BlocProvider(
                   create: (context) => SigninCubit(),

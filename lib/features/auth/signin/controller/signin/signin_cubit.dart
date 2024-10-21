@@ -10,16 +10,18 @@ class SigninCubit extends Cubit<SigninState> {
     initData();
   }
   TextEditingController? phoneController;
+  TextEditingController? otpController;
   final GlobalKey<FormState> signinFormKey = GlobalKey<FormState>();
-
+  FirebaseAuth auth = FirebaseAuth.instance;
+  String? verificationId;
   initData() {
     phoneController = TextEditingController(text: "01032970717");
   }
 
-  phoneSignin() async {
+  submitPhoneNumber() async {
     if (signinFormKey.currentState!.validate()) {
       emit(SigninLoading());
-      await FirebaseAuth.instance.verifyPhoneNumber(
+      await auth.verifyPhoneNumber(
         phoneNumber: "+2${phoneController!.text}",
         verificationCompleted: (PhoneAuthCredential credential) {
           emit(SigninSuccess());
@@ -27,9 +29,27 @@ class SigninCubit extends Cubit<SigninState> {
         verificationFailed: (FirebaseAuthException e) {
           emit(SigninError(errorMessage: e.toString()));
         },
-        codeSent: (String verificationId, int? resendToken) {},
+        codeSent: (String verificationid, int? resendToken) {
+          verificationId = verificationid;
+        },
         codeAutoRetrievalTimeout: (String verificationId) {},
       );
     }
+  }
+
+  submitOTP() async {
+    emit(SigninLoading());
+    try {
+      PhoneAuthCredential credential = PhoneAuthProvider.credential(
+          verificationId: verificationId!, smsCode: otpController!.text);
+      await signin(credential);
+      emit(SigninSuccess());
+    } on Exception catch (e) {
+      emit(SigninError(errorMessage: e.toString()));
+    }
+  }
+
+  signin(AuthCredential credential) async {
+    await auth.signInWithCredential(credential);
   }
 }

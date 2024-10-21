@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:maps/features/auth/signin/controller/signin/signin_cubit.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 class PinCode extends StatelessWidget {
@@ -14,6 +16,7 @@ class PinCode extends StatelessWidget {
         shape: PinCodeFieldShape.box,
         borderRadius: BorderRadius.circular(10),
         borderWidth: 2,
+
         activeFillColor: Colors.white,
         inactiveFillColor: Colors.white,
         selectedFillColor: Colors.white,
@@ -22,6 +25,7 @@ class PinCode extends StatelessWidget {
         activeColor: Colors.green, // Color when the field is active
       ),
       animationDuration: const Duration(milliseconds: 300),
+      controller: context.read<SigninCubit>().otpController,
       enableActiveFill: false,
       onCompleted: (v) {
         print("Completed");

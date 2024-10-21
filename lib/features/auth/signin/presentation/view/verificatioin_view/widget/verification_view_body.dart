@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:maps/features/auth/signin/presentation/view/signin_view/widget/next_button.dart';
 import 'package:maps/features/auth/signin/presentation/view/verificatioin_view/widget/pin_code.dart';
 import 'package:maps/features/auth/signin/presentation/view/verificatioin_view/widget/sub_title_text.dart';
+import 'package:maps/features/auth/signin/presentation/view/verificatioin_view/widget/verify_button.dart';
 import '../../../../../../../core/theme/styles.dart';
 
 class VerificationViewBody extends StatelessWidget {
@@ -21,7 +21,7 @@ class VerificationViewBody extends StatelessWidget {
           SizedBox(height: 30.h),
           const PinCode(),
           SizedBox(height: 30.h),
-          const Align(alignment: Alignment.centerRight, child: NextButton())
+          const Align(alignment: Alignment.centerRight, child: VerifyButton())
         ],
       ),
     );

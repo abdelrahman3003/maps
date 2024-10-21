@@ -8,8 +8,8 @@ import '../../../../../../../core/constant/routes.dart';
 import '../../../../../../../core/theme/widget/app_button.dart';
 import '../../../../controller/signin/signin_cubit.dart';
 
-class NextButton extends StatelessWidget {
-  const NextButton({super.key});
+class VerifyButton extends StatelessWidget {
+  const VerifyButton({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -31,8 +31,10 @@ class NextButton extends StatelessWidget {
         return AppButton(
           isLoading: isLoading,
           width: 100.w,
-          text: "Next",
-          onPressed: () {},
+          text: "Verify",
+          onPressed: () {
+            !isLoading ? context.read<SigninCubit>().submitOTP() : null;
+          },
         );
       },
     );
